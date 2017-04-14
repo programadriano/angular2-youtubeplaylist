@@ -1,3 +1,20 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-2">
+        <button type="button" class="btn btn-success">Voltar</button>
+    </div>
+    <div class="col-12 col-md-auto" *ngFor="let t of playlist; let i = index">
+         </div>
+    <div class="col col-lg-2">
+        <button type="button" class="btn btn-primary">Proximo</button>
+    </div>
+  </div>
+
+  <div class="row thumbnail" >
+    <div class="col-xs-6 col-md-3" *ngFor="let v of playlist | slice:1">
+    <a href="#" class="thumbnail">
+      <img src="{{v.snippet.thumbnails.default.url}}" alt="{{v.snippet.title}}">
+    </a>
+  </div>
+  </div>
+</div>

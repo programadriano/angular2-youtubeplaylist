@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { HttpUtilService } from "app/services/http-util-service";
+import { YoutubePlaylist } from "app/services/youtube-playlist";
 
 @NgModule({
   declarations: [
@@ -12,9 +14,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
   ],
-  providers: [],
+  providers: [HttpUtilService,YoutubePlaylist],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
