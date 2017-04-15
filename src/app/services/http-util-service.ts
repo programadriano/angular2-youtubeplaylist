@@ -7,7 +7,7 @@ export class HttpUtilService {
 		
 	
 	private API_Youtube: string = 'https://www.googleapis.com/youtube/v3/playlistItems?';
-
+    
 	url(path: string) {
 		return this.API_Youtube + path;
 	}
@@ -20,8 +20,8 @@ export class HttpUtilService {
 	}
 
 	extrairDados(response: Response) {
-		let data = response.json().items;
-		console.log(data);
+		let data = response.json();
+	//	console.log(data.etag);
 		return data || {};
 	}
 
