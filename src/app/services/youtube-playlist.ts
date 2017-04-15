@@ -23,12 +23,23 @@ export class YoutubePlaylist {
 
     constructor(private http: Http, private httpUtil: HttpUtilService) {}
 
-    getplaylist(playlistId): Observable<Playlist[]> {
+    getplaylist(playlistId): Observable<Playlist> {
 
         return this.http.get(this.httpUtil.url("part=snippet&playlistId="+playlistId+"&key="+this.key),
             this.httpUtil.headers())
             .map(this.httpUtil.extrairDados)
             .catch(this.httpUtil.processarErros);
     }
+
+
+    playlistList_page(playlistId, pageToken){
+
+          return this.http.get(this.httpUtil.url("part=snippet&pageToken="+pageToken+"&playlistId="+playlistId+"&key="+this.key),
+            this.httpUtil.headers())
+            .map(this.httpUtil.extrairDados)
+            .catch(this.httpUtil.processarErros);
+
+       // return this.http.get("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&pageToken="+pageToken+"&playlistId="+playlistId+"&key="+this.key)
+  }
 
 }

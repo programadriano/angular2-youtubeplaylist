@@ -9,7 +9,7 @@ import { YoutubePlaylist } from "app/services/youtube-playlist";
 })
 
 export class AppComponent {
-   private playlist:Playlist[];
+  private playlist:Playlist[];
   private playlistYoutube:any;
 
    private msgErro: string;
@@ -17,6 +17,7 @@ export class AppComponent {
    constructor(private youtubePlaylist:YoutubePlaylist) { }
 
 getplaylist() {
+  
     // this.youtubePlaylist.getplaylist("PLPrQRyn2uGR0sskMv0XC9gTrJHWRm35Ji")
     //   .subscribe(
     //    value => {console.log(value),
@@ -29,11 +30,28 @@ getplaylist() {
       //   } ); 
       // });
 
-       this.playlistYoutube = this.youtubePlaylist.getplaylist("PLPrQRyn2uGR0sskMv0XC9gTrJHWRm35Ji").subscribe(value => {
-       console.log(value.items);
+       this.playlistYoutube = this.youtubePlaylist.getplaylist("PLPrQRyn2uGR0sskMv0XC9gTrJHWRm35Ji")
+       .subscribe(value => {
+              this.playlistYoutube = value
+               console.log(this.playlistYoutube)
+               console.log(this.playlistYoutube.items)
       });
 
+     
+
       
+  }
+
+
+  //playlistList_page
+
+  nextPage(pageToken:string){
+    
+    this.playlistYoutube = this.youtubePlaylist.playlistList_page("PLPrQRyn2uGR0sskMv0XC9gTrJHWRm35Ji",pageToken).subscribe(value => {
+              this.playlistYoutube = value
+               console.log(this.playlistYoutube)
+               console.log(this.playlistYoutube.items)
+      });
   }
 
   ngOnInit(){
